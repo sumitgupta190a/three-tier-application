@@ -1,0 +1,332 @@
+ 345  cd two-tier-flask-app/
+  346  cd .
+  347  cd ..
+  348  cd T
+  349  cd three-tier-application/
+  350  ls
+  351  cd frontend/
+  352  ls
+  353  clear
+  354  ls
+  355  rm Dockerfile
+  356  vim Dockerfile
+  357  docker build -t
+  358  docker build -t three-tier-frontend
+  359  docker build -t three-tier-frontend .
+  360  docker ps
+  361  ls
+  362  vim Dockerfile
+  363  docker build -t three-tier-frontend .
+  364  docker images
+  365  docker ps
+  366  docker run -d -p 3000:3000 three-tier-frontend
+  367  docker ps
+  368  docker kill 386a2bc1b2c0
+  369  celar
+  370  clear
+  371  cd
+  372  whoami
+  373  clear
+  374  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  375  sudo apt install unzip
+  376  unzip awscliv2.zip
+  377  sudo ./aws/install -i /usr/local/aws-cli -b /usr/local/bin --update
+  378  aws configure
+  379  aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/x1r3c1f5
+  380  ls
+  381  cd three-tier-application/
+  382  cd frontend/
+  383  docker build -t three-tier-frontend .
+  384  docker tag three-tier-frontend:latest public.ecr.aws/x1r3c1f5/three-tier-frontend:latest
+  385  docker push public.ecr.aws/x1r3c1f5/three-tier-frontend:latest
+  386  cd ..
+  387  cd backend/
+  388  ls
+  389  rm Dockerfile
+  390  vim Dockerfile
+  391  aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/x1r3c1f5
+  392  docker build -t three-tier-backend .
+  393  docker tag three-tier-backend:latest public.ecr.aws/x1r3c1f5/three-tier-backend:latest
+  394  docker push public.ecr.aws/x1r3c1f5/three-tier-backend:latest
+  395  docker ps
+  396  docker run -d -p 8080:8080
+  397  docker run -d -p 8080:8080 three-tier-backend
+  398  docker ps
+  399  docker logs
+  400  docker log
+  401  docker ps
+  402  docker log 8dd85e3a5d74
+  403  docker logs 8dd85e3a5d74
+  404  cd
+  405  curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
+  406  chmod +x ./kubectl
+  407  sudo mv ./kubectl /usr/local/bin
+  408  kubectl version --short --client
+  409  curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+  410  sudo mv /tmp/eksctl /usr/local/bin
+  411  eksctl version
+  412  eksctl create cluster --name three-tier-cluster --region ap-south-1 --node-type t2.medium --nodes-min 2 --nodes-max 2
+  413  eksctl create cluster --name three-tier-cluster --region ap-south-1 --node-type t2.micro --nodes-min 2 --nodes-max 2
+  414  kubectl get nodes
+  415  aws eks update-kubeconfig --region us-west-2 --name three-tier-cluster
+  416  kubectl get nodes
+  417  clear
+  418  ls
+  419  cd three-tier-application/
+  420  s
+  421  ls
+  422  cd k8s_manifests/
+  423  ls
+  424  cd mongo/
+  425  ls
+  426  kubectl apply - deploy.yaml
+  427  kubectl apply -f deploy.yaml
+  428  kubectl create namespace workshop
+  429  kubectl apply -f deploy.yaml
+  430  kubectl get deployment -n workshop
+  431  kubectl apply -f secrets.yaml
+  432  kubectlget pods -n workshop
+  433  kubectl get pods -n workshop
+  434  kubectl get svc -n workshop
+  435  kubectl apply -f service.yaml
+  436  kubectl get svc -n workshop
+  437  ls
+  438  cd ..
+  439  ls
+  440  vim backend-
+  441  ls
+  442  vim backend-deployment.yaml
+  443  vim backend-service.yaml
+  444  kubectl apply -f backend-deployment.yaml
+  445  kubectl apply -f backend-service.yaml
+  446  kubectl get pods
+  447  kubectl get pod
+  448  kubectl get pod -n workspace
+  449  kubectl get pods -n workspace
+  450  kubectl get logs api-d5b67f68c-2zmxw -n workshop
+  451  kubectl get log api-d5b67f68c-2zmxw -n workshop
+  452  kubectl logs api-d5b67f68c-2zmxw -n workshop
+  453  ls
+  454  vim frontend-deployment.yaml
+  455  clear
+  456  ls
+  457  kubectl apply -f frontend-deployment.yaml
+  458  kubectl apply -f frontend-service.yaml
+  459  kubectt get pods -n workshop
+  460  kubectl get pods -n workshop
+  461  ls
+  462  kubectt get pods -n workshop
+  463  kubectl get pods -n workshop
+  464  kubernetes ki  frontend-549cb6458b-rd6wg
+  465  kubernetes kill  frontend-549cb6458b-rd6wg
+  466  kubectl kill  frontend-549cb6458b-rd6wg
+  467  ubuntu@ip-172-31-45-64:~/three-tier-application/k8s_manifests$ kubectl kill  frontend-549cb6458b-rd6wg
+  468  Error: unknown command "kill" for "kubectl"
+  469  Run 'kubectl --help' for usage.
+  470  kubectl delete pod ubuntu@ip-172-31-45-64:~/three-tier-application/k8s_manifests$ kubectl kill  frontend-549cb6458b-rd6wg
+  471  Error: unknown command "kill" for "kubectl"
+  472  Run 'kubectl --help' for usage
+  473  kubectl delete pod frontend-549cb6458b-rd6wg
+  474  kubectl delete pod frontend-549cb6458b-rd6wg -n workshop
+  475  clear
+  476  ls
+  477  kubectl get pods -n workshop
+  478  kubectl delete pod frontend-549cb6458b-rd6wg -n workshop
+  479  clear
+  480  kubectl get pods -n workshop
+  481  ubectl apply -f frontend-deployment.yaml
+  482  kubectl apply -f frontend-deployment.yaml
+  483  kubectl apply -f frontend-service.yaml
+  484  kubectl get pods -n worksho
+  485  kubectl get pods -n workshop
+  486  kubectl delete pod frontend-549cb6458b-lnlp7 --grace-period=0 --force
+  487  kubectl delete pod frontend-549cb6458b-lnlp7 --grace-period=0 --force -n workshop
+  488  kubectl get pods -n workshop
+  489  kubectl describe pod frontend-549cb6458b-lnlp7
+  490  kubectl describe pod frontend-549cb6458b-lnlp7 -n workshop
+  491  kubectl describe pod frontend-549cb6458b-pvn9m -n workshop
+  492  clear
+  493  kubectl get pods -n workshop
+  494  clear
+  495  ls
+  496  cd three-tier-application/
+  497  ls
+  498  kubectl get pods -n workshop
+  499  kubectl get svc -n workshop
+  500  kubectl get deployment
+  501  ls
+  502  cd frontend/
+  503  ls
+  504  cd ..
+  505  ls
+  506  cd k8s_manifests/
+  507  ls
+  508  cat frontend-deployment.yaml
+  509  kubectl get deployments -n workspace
+  510  kubectl get deployments -n workshop
+  511  kubectl get deployments delete frontend
+  512  kubectl delete deployment frontend -n workshop
+  513  kubectl get deployments delete frontend
+  514  kubectl get deployments -n workshop
+  515  ls
+  516  clear
+  517  kubectl get pods -n workshop
+  518  ls
+  519  kubectl apply -f frontend-deployment.yaml
+  520  kubectl apply -f frontend-service.yaml
+  521  kubectl get pods -n workshop
+  522  kubectl delete deployments frontend -n workshop
+  523  kubectl get pods -n workshop
+  524  ls
+  525  cd three-tier-application/
+  526  s
+  527  ls
+  528  cd k8s_manifests/
+  529  la
+  530  ls
+  531  clear
+  532  ls
+  533  cat frontend-d
+  534  cat frontend-deployment.yaml
+  535  cat frontend-service.yaml
+  536  http://challenge.trainwithshubham.com/api/task
+  537  ls
+  538  kubernetes apply -f frontend-deployment.yaml
+  539  kubectl apply -f frontend-deployment.yaml
+  540  kubectl apply -f frontend-service.yaml
+  541  kubectl get pods -n workshop
+  542  kubectl describe po frontend-549cb6458b-6l8nw -n workshop
+  543  kubectl describe nodes
+  544  kubectl describe frontend-549cb6458b-6l8nw -n workshop
+  545  kubectl get event
+  546  kubectl get events
+  547  kubectl get events -n wordshop
+  548  kubectl get pods
+  549  kubectl get pods -n workshop
+  550  kubectl get events -n wordshop
+  551  kubectl get events -n workshop
+  552  ls
+  553  cat frontend-service.yaml
+  554  cat frontend-deployment.yaml
+  555  ls
+  556  kubectl get pods -n workshop
+  557  frontend-549cb6458b-6l8nwfrontend-549cb6458b-6l8nwfrontend-549cb6458b-6l8nwfrontend-549cb6458b-6l8nwfrontend-549cb6458b-6l8nw
+  558  ls
+  559  cd three-tier-application/
+  560  ls
+  561  kubectl get pods
+  562  kubectl get pods -n workshop
+  563  kubectl get deployments -n pods
+  564  kubectl get deployment -n pods
+  565  kubectl get deployment -n workshop
+  566  kubectl delete deployment frontend -n workshop
+  567  kubectl get deployment -n workshop
+  568  kubectl get pods -n workshop
+  569  ls
+  570  cd k8s_manifests/
+  571  ls
+  572  cat frontend-deployment.yaml
+  573  vim frontend-deployment.yaml
+  574  sudo vim frontend-deployment.yaml
+  575  cat frontend-deployment.yaml
+  576  ls
+  577  kubectl frontend-deployment.yaml
+  578  kubectl apply -f frontend-deployment.yaml
+  579  kubectl apply -f frontend-service.yaml
+  580  kubectl get pods -n workshop
+  581  kubectl get deployment -n workshop
+  582  kubectl get svc
+  583  kubectl get svc -n workshop
+  584  kubectl delete svc frontend-n workshop
+  585  kubectl delete svc frontend -n workshop
+  586  kubectl get pods -n workshop
+  587  kubectl get deployments -n workshop
+  588  kubectl delete deployments frontend -n workshop
+  589  kubectl get pods -n workshop
+  590  kubectl apply -f frontend-deployment.yaml
+  591  kubectl apply -f frontend-service.yaml
+  592*
+  593  kubectl describe event
+  594  kubectl describe event -n workshop
+  595  kubectl describe event
+  596  kubectl get pods -n workshop
+  597  kubectl describe event frontend-79df478b8-8zt4b -n workshop
+  598  kubectl get pods -n workshop
+  599  cd
+  600  curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
+  601  df -h
+  602  sudo curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
+  603  kubectl delete all
+  604  kubectl delete all -all
+  605  kubectl delete -all
+  606  kubectl delete -all -n workshop
+  607  kubectl delete --all -n workshop
+  608  kubectl delete all --all -n workshop
+  609  kubectl get pods -n workdhop
+  610  kubectl get pods -n workshop
+  611  kubectl get svc
+  612  kubectl delete svc kubernetes
+  613  kubectl get svc -n workshop
+  614  kubectl get svc -n workspace
+  615  ls
+  616  kubectl get deployments -n workshop
+  617  kubectl get deployments
+  618  kubectl get deployments -n workshop
+  619  eks delete cluster --name three-tier-cluster --region us-west-2
+  620  eksctl delete cluster --name three-tier-cluster --region us-west-2
+  621  ls
+  622  echo "# three-tier-application" >> README.md
+  623  git init
+  624  git add .
+  625  git commit -m "first commit"
+  626  git branch -M master
+  627  git remote add origin https://github.com/sumitgupta190a/three-tier-application.git
+  628  git push -u origin master
+  629  git init
+  630  ls
+  631  rm two-tier-flask-app/
+  632  rm -f two-tier-flask-app/
+  633  rm -r two-tier-flask-app/
+  634  ls
+  635  rm -r two-tier-flask-app/
+  636  ls
+  637  cd T
+  638  cd three-tier-application/
+  639  git init
+  640  sudo git init
+  641  cd ..
+  642  ls
+  643  rm aws
+  644  rm -r aws
+  645  rm awscliv2.zip
+  646  rm iam_policy.json
+  647  ls
+  648  clear
+  649  ls
+  650  cat README.md
+  651  rm README.md
+  652  ls
+  653  cd three-tier-application/
+  654  ls
+  655  cat README.md
+  656  clear
+  657  ls
+  658  git init
+  659  git add .
+  660  sudo git add .
+  661  sudo git commit -m "uploading project"
+  662  ls
+  663  cd frontend/
+  664  ls
+  665  cd
+  666  ls
+  667  clear
+  668  ls
+  669  cd three-tier-application/
+  670  git branch -M master
+  671  git remote add origin https://github.com/sumitgupta190a/three-tier-application.git
+  672  git remote -v
+  673  git remote set-url origin https://github.com/sumitgupta190a/three-tier-application.git
+  674  git push -u origin master
+  675  ls
+  676  history
